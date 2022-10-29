@@ -3,3 +3,9 @@
     padding:0;
     margin: 0;
 }
+
+@media screen and (max-width: 700px) {
+    .sign__form {
+        width: 260px;
+    }
+}

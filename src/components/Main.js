@@ -1,4 +1,5 @@
 import Card from './Card.js';
+import Footer from './Footer.js';
 import { useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
@@ -8,6 +9,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, cardsData,
 
 
     return(
+        <>
         <main>
             <section className="profile">
                 <div className="profile__info">
@@ -40,6 +42,8 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, cardsData,
                 </ul>
             </section>
         </main>
+        <Footer />
+        </>
     )
 }
 

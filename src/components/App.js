@@ -1,18 +1,21 @@
 import {useState, useEffect} from 'react';
-import Header from './Header.js';
-import Footer from './Footer.js';
-import Main from './Main.js';
-// import PopupWithForm from './PopupWithForm';
-import ImagePopup from './ImagePopup.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import { LoadingContext } from '../contexts/LoadingContext.js';
+import { LoginContext } from '../contexts/LoginContext.js';
+import Header from './Header.js';
+import Main from './Main.js';
+import ImagePopup from './ImagePopup.js';
 import api from '../utils/Api.js';
 import EditProfilePopup from './EditProfilePopup.js';
 import EditAvatarPopup from './EditAvatarPopup.js';
 import AddPlacePopup from './AddPlacePopup.js';
 import DeleteCardPopup from './DeleteCardPopup.js';
-import { LoadingContext } from '../contexts/LoadingContext.js';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute.js';
 import Login from './Login.js';
+import Register from './Register.js';
+import * as auth from '../utils/Auth.js';
+import InfoTooltip  from './InfoTooltip.js';
 
 
 function App() {
@@ -22,9 +25,14 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({data: {}, isOpen: false});
   const [deletedCard, setDeletedCard] = useState({data: {}, isOpen: false});
 
+  const [registerStatus, setRegisterStatus] = useState({isOpen: false, status: false});
+
   const [currentUser, setCurrentUser] =useState({});
   const [cardsData, setCardsData] = useState([]);
 
+  const [isLoggedIn, setLoginStatus] = useState(false);
+
+  const history = useHistory();
 
   useEffect(() => {
       Promise.all([api.getInitialCards(), api.getUserData()])
@@ -54,6 +62,7 @@ function App() {
       setIsAddPlaceState(false);
       setSelectedCard({data: {}, isOpen: false})
       setDeletedCard({data: {}, isOpen: false});
+      setRegisterStatus({isOpen: false, status: false});
   }
 
   function handleCardClick(card) {
@@ -135,14 +144,61 @@ function App() {
   }
 
 
+  function handleRegisterInfo(isSuccess) {
+    if(isSuccess) {
+      setRegisterStatus({
+        isOpen: true,
+        status: true
+      })
+    } else {
+      setRegisterStatus({
+        isOpen: true,
+        status: false
+      })
+    }
+  }
+
+  function signOut(){
+    localStorage.removeItem('token');
+    setLoginStatus(false);
+    history.push('/sign-in');
+  }
+
+  function handleRegister(password, email) {
+    auth.register(password, email)
+      .then(() => handleRegisterInfo(true))
+      .catch(err => {
+        handleRegisterInfo(false);
+        console.log(`Не удалось зарегистрировать пользователя. ${err}`);
+      });
+  }
+
+  function handleLogin(password, email) {
+    auth.login(password, email)
+      .then(() => {
+        setLoginStatus(true);
+        history.push('/');
+      })
+      .catch(err => {
+        handleRegisterInfo(false);
+        console.log(`Не удалось войти. ${err}`);
+      });
+  }
+
+
+
   return (
     <div className="root">
       <div className="page">
+      <LoginContext.Provider value={isLoggedIn} >
         <CurrentUserContext.Provider value={currentUser} >
-          <Header />
+          <Header 
+          signOut={signOut}
+          />
           <Switch>
-            <Route path="/main">
-            <Main 
+            <ProtectedRoute 
+                path="/"
+                component={Main}
                 onEditProfile={onEditProfile} 
                 cardsData={cardsData} 
                 onAddPlace={onAddPlace} 
@@ -150,21 +206,20 @@ function App() {
                 onCardClick={handleCardClick} 
                 onCardLike={handleCardLike}
                 onCardDelete={handleDeleteClick} 
+                exact
               />
-            </Route>
-          <Route path='/sign-in'>
+            <Route path='/sign-in'>
               <Login
-                // handleLogin={handleLogin} 
+                handleLogin={handleLogin} 
               />
             </Route>
             <Route path='/sign-up'>
-              <EditAvatarPopup 
-              // handleRegister={handleRegister} 
+              <Register 
+                handleRegister={handleRegister} 
               />
             </Route>
           </Switch>
 
-          <Footer />
           <LoadingContext.Provider value={isLoading} >
             <EditProfilePopup 
               isOpen={isEditProfilePopupOpen} 
@@ -198,7 +253,13 @@ function App() {
             card={selectedCard.data} 
             isLoading={isLoading}
           />
+          <InfoTooltip 
+            isOpen={registerStatus.isOpen} 
+            isSuccess={registerStatus.status} 
+            onClose={closeAllPopups} 
+          />
         </CurrentUserContext.Provider>
+        </LoginContext.Provider>
       </div>
     
     </div>

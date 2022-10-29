@@ -7,6 +7,17 @@
 @import url(./bloсks/header/header.css);
 @import url(./bloсks/header/__logo/header__logo.css);
 
+@import url(./bloсks/header/__button/header__button.css);
+@import url(./bloсks/header/__button/_type/header__button_type_logout.css);
+@import url(./bloсks/header/__email/header__email.css);
+@import url(./bloсks/header/__menu-button/header__menu-button.css);
+@import url(./bloсks/header/__menu-button/_type/header__menu-button_type_close.css);
+@import url(./bloсks/header/__menu-button/_type/header__menu-button_type_open.css);
+@import url(./bloсks/header/__navigation-bar/header__navigation-bar.css);
+@import url(./bloсks/header/__navigation-bar/_opened/header__navigation-bar_opened.css);
+@import url(./bloсks/header/_type/header_type_login.css);
+@import url(./bloсks/header/_type/header_type_sign.css);
+
 /* Логотип */
 @import url(./bloсks/logo/logo.css);
 
@@ -75,3 +86,5 @@
 @import url(./bloсks/sign/__error/sign__error.css);
 @import url(./bloсks/sign/__submit-button/sign__submit-button.css);
 @import url(./bloсks/sign/__submit-button/_inactive/sign__submit-button_inactive.css);
+@import url(./bloсks/sign/__caption/sign__caption.css);
+@import url(./bloсks/sign/__link/sign__link.css);

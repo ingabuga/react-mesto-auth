@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Route, Navigate } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { LoginContext } from '../contexts/LoginContext.js';
 
 function ProtectedRoute ({ component: Component, ...props }) {
@@ -8,7 +8,7 @@ function ProtectedRoute ({ component: Component, ...props }) {
     return (
         <Route>
             {() =>
-            isLoggedIn ? <Component {...props} /> : <Navigate to="/signin" />
+            isLoggedIn ? <Component {...props} /> : <Redirect to="/sign-in" />
             }
         </Route>
     );
