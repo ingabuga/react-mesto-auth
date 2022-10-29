@@ -24,8 +24,8 @@ function AuthorizeForm({ name, handleSubmit }) {
         >
         <fieldset className="sign__fieldset">
             <legend className="sign__title">
-                {name === "signup" && "Регистрация"}
                 {name === "signin" && "Вход"}
+                {name === "signup" && "Регистрация"}
             </legend>
             <input 
                 type="email"
@@ -37,7 +37,7 @@ function AuthorizeForm({ name, handleSubmit }) {
                 value={values.email || ''}
                 required
             />
-            <span className="sign__error-message" >
+            <span className="sign__error" >
                 {errorMessages.email}
             </span>
             <input 
@@ -52,19 +52,19 @@ function AuthorizeForm({ name, handleSubmit }) {
                 value={values.password || ''}
                 required
             />
-            <span className="sign__error-message" >
+            <span className="sign__error" >
                 {errorMessages.password}
             </span>
             <button 
                 type="submit" 
                 className={
                     `sign__submit-button 
-                    ${!formIsValid && "sign__submit-button_disabled"}`
+                    ${!formIsValid && "sign__submit-button_inactive"}`
                 } 
                 disabled={!formIsValid}
             >
-                {name === "signup" && "Зарегистрироваться"}
                 {name === "signin" && "Войти"}
+                {name === "signup" && "Зарегистрироваться"}
             </button>
         </fieldset>
     </form>

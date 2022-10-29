@@ -3,10 +3,10 @@ import AuthorizeForm from './AuthorizeForm.js';
 
 function Login({ handleLogin }) {
     return(
-        <section className="sign content__sign">
+        <section className="sign sign__content">
             <AuthorizeForm
                 name='signin'
-                handleSubmit={handleLogin}
+                // handleSubmit={handleLogin}
             />
         </section>
     );

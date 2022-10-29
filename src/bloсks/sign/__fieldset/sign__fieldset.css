@@ -1,0 +1,8 @@
+.sign__fieldset {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    border: none;
+    align-items: left;
+}

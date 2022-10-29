@@ -1,0 +1,10 @@
+.sign__error {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #FD0707;
+    min-height: 30px;
+    margin: 0;
+    padding: 0;
+}

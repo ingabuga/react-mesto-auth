@@ -11,6 +11,8 @@ import EditAvatarPopup from './EditAvatarPopup.js';
 import AddPlacePopup from './AddPlacePopup.js';
 import DeleteCardPopup from './DeleteCardPopup.js';
 import { LoadingContext } from '../contexts/LoadingContext.js';
+import { Route, Switch } from 'react-router-dom';
+import Login from './Login.js';
 
 
 function App() {
@@ -138,17 +140,30 @@ function App() {
       <div className="page">
         <CurrentUserContext.Provider value={currentUser} >
           <Header />
-          
-          <Main 
-            onEditProfile={onEditProfile} 
-            cardsData={cardsData} 
-            onAddPlace={onAddPlace} 
-            onEditAvatar={onEditAvatar} 
-            onCardClick={handleCardClick} 
-            onCardLike={handleCardLike}
-            onCardDelete={handleDeleteClick} 
-          />
-          
+          <Switch>
+            <Route path="/main">
+            <Main 
+                onEditProfile={onEditProfile} 
+                cardsData={cardsData} 
+                onAddPlace={onAddPlace} 
+                onEditAvatar={onEditAvatar} 
+                onCardClick={handleCardClick} 
+                onCardLike={handleCardLike}
+                onCardDelete={handleDeleteClick} 
+              />
+            </Route>
+          <Route path='/sign-in'>
+              <Login
+                // handleLogin={handleLogin} 
+              />
+            </Route>
+            <Route path='/sign-up'>
+              <EditAvatarPopup 
+              // handleRegister={handleRegister} 
+              />
+            </Route>
+          </Switch>
+
           <Footer />
           <LoadingContext.Provider value={isLoading} >
             <EditProfilePopup 

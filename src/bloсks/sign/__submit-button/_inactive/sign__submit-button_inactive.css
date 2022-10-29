@@ -1,0 +1,7 @@
+.sign__submit-button_inactive {
+    opacity: 0.6;
+}
+
+.sign__submit-button_inactive:hover {
+    opacity: 0.6;
+}

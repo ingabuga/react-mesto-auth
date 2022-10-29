@@ -63,3 +63,15 @@
 /* Error */
 @import url(./bloсks/error/error.css);
 @import url(./bloсks/error/_active/error_active.css);
+
+
+/* Авторизация */
+@import url(./bloсks/sign/sign.css);
+@import url(./bloсks/sign/__content/sign__content.css);
+@import url(./bloсks/sign/__form/sign__form.css);
+@import url(./bloсks/sign/__fieldset/sign__fieldset.css);
+@import url(./bloсks/sign/__title/sign__title.css);
+@import url(./bloсks/sign/__input/sign__input.css);
+@import url(./bloсks/sign/__error/sign__error.css);
+@import url(./bloсks/sign/__submit-button/sign__submit-button.css);
+@import url(./bloсks/sign/__submit-button/_inactive/sign__submit-button_inactive.css);
