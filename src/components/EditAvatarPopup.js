@@ -1,12 +1,12 @@
 // import { useEffect, useRef, useState} from 'react';
 // import PopupWithForm from './PopupWithForm.js';
-// import {useFormAndValidation} from './useFormAndValidation.js'
+// import {useFormAndValidation} from '../hooks/useFormStateAndValidation'
 
 // function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
 //     const inputRef = useRef();
 
 
-//   const {values, handleChange, errors, isValid, setValues, resetForm} = useFormAndValidation()
+//   const {values, handleChange, errors, isValid, setValues, resetForm} = useFormStateAndValidation()
 
 
 //     function handleSubmit(evt) {
@@ -83,6 +83,7 @@
 import { useEffect, useRef, useState} from 'react'; 
 import PopupWithForm from './PopupWithForm.js'; 
 
+
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) { 
     const inputRef = useRef(); 
 
@@ -91,43 +92,64 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
         onUpdateAvatar({ 
             avatar: inputRef.current.value 
         }); 
+
     } 
+
  
+
     const [isValid, setValidity] = useState({valid: false, message: ''}); 
+
  
+
     function handleValidation() { 
+
         if (inputRef.current.validity.valid) { 
             setValidity({ 
                 valid: true,  
                 message: '' 
             }) 
-
         } else { 
             setValidity({ 
                 valid: false,  
                 message: inputRef.current.validationMessage 
             }) 
-        } 
-    } 
 
+        } 
+
+      } 
+
+ 
+
+    // useEffect(() =>{ 
+
+    //     inputRef.current.value = ''; 
+
+    // }, [isOpen]) 
+
+ 
 
     useEffect(() =>{ 
         inputRef.current.value = ''; 
         setValidity({valid: false, message: ''}); 
-    }, [isOpen]) 
+      }, [isOpen]) 
 
+ 
+
+ 
 
     return ( 
-        <PopupWithForm  
-            name="avatar"  
-            title="Обновить аватар" 
-            buttonText="Сохранить" 
-            isOpen={isOpen}  
-            onClose={onClose}  
-            onSubmit={handleSubmit} 
-            isValid={isValid.valid} 
-        > 
 
+ 
+
+    <PopupWithForm  
+        name="avatar"  
+        title="Обновить аватар" 
+        buttonText="Сохранить" 
+        isOpen={isOpen}  
+        onClose={onClose}  
+        onSubmit={handleSubmit} 
+        isValid={isValid.valid} 
+    > 
             <div className="popup__field"> 
                 <input type="url" id="avatar-input" placeholder="Ссылка на аватар" name="link" className="popup__text popup__text_input_job" required ref={inputRef} onChange={handleValidation}/> 
                 <span id="avatar-input-error"  
@@ -137,8 +159,14 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
                     {isValid.message} 
                 </span> 
             </div> 
-        </PopupWithForm> 
+
+    </PopupWithForm> 
+
+ 
+
     ) 
+
+ 
 
 } 
 
