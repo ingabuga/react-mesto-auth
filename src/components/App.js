@@ -76,7 +76,7 @@ function App() {
   }
     
   //Обработчик нажатия Escape
-  const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.isOpen || deletedCard.isOpen
+  const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.isOpen || deletedCard.isOpen || registerStatus.isOpen
 
   useEffect(() => {
     function closeByEscape(evt) {
