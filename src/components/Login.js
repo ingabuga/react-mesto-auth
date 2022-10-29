@@ -6,7 +6,7 @@ function Login({ handleLogin }) {
         <section className="sign sign__content">
             <AuthorizeForm
                 name='signin'
-                // handleSubmit={handleLogin}
+                handleSubmit={handleLogin}
             />
         </section>
     );

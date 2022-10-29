@@ -45,8 +45,8 @@ function AuthorizeForm({ name, handleSubmit }) {
                 name="password" 
                 id="password-input" 
                 className="sign__input" 
-                minLength="5" 
-                maxLength="16" 
+                minLength="7" 
+                maxLength="20" 
                 placeholder="Пароль"
                 onChange={onChange}
                 value={values.password || ''}

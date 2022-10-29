@@ -158,6 +158,33 @@ function App() {
     }
   }
 
+
+  function checkToken() {
+    const token = localStorage.getItem('token');
+
+    if(token) {
+      auth.checkToken(token)
+        .then(res => {
+          if(res) {
+            setCurrentUser(prevState => ({
+              ...prevState,
+              email: res.email,
+            }))
+            setLoginStatus(true);
+            history.push('/');
+          }
+        })
+        .catch(err => console.log(`Не удалось проверить токен. ${err}`));
+    }
+  }
+
+  useEffect(() => {
+    checkToken()
+  }, [isLoggedIn]);
+
+
+
+
   function signOut(){
     localStorage.removeItem('token');
     setLoginStatus(false);
