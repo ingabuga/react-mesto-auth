@@ -28,7 +28,7 @@ function Navigation({ signOut }) {
                 <li>
                     <HeaderButton 
                         text="Выйти" 
-                        link="/signin" 
+                        link="/sign-in" 
                         signOut={signOut} 
                     />
                 </li>

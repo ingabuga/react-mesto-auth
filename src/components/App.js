@@ -32,6 +32,8 @@ function App() {
 
   const [isLoggedIn, setLoginStatus] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const history = useHistory();
 
   useEffect(() => {
@@ -111,7 +113,7 @@ function App() {
       .catch(err => console.log(`Не удалость удалить карточку. Ошибка: ${err}`))
   }
 
-  const [isLoading, setIsLoading] = useState(false);
+  
 
 
   function handleUpdateUser(data) {
