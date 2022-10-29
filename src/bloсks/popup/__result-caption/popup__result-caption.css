@@ -1,0 +1,17 @@
+.popup__result-caption {
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
+    text-align: center;
+    color: #000000;
+    margin: 32px 0 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 700px) {
+    .popup__result-caption {
+        font-size: 20px;
+        line-height: 24px;
+        margin-top: 40px;
+    }
+}

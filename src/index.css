@@ -70,6 +70,12 @@
 @import url(./bloсks/popup/__save-button/_inactive/popup__save-button_inactive.css);
 @import url(./bloсks/popup/__text/_input/popup__text_input_error.css);
 @import url(./bloсks/popup/_avatar/popup_avatar.css);
+@import url(./bloсks/popup/__tooltip/popup__tooltip.css);
+@import url(./bloсks/popup/__tooltip/_type/popup__tooltip_type_result.css);
+@import url(./bloсks/popup/__result/popup__result.css);
+@import url(./bloсks/popup/__result/_type/popup__result_type_correct.css);
+@import url(./bloсks/popup/__result/_type/popup_result_type_incorrect.css);
+@import url(./bloсks/popup/__result-caption/popup__result-caption.css);
 
 /* Error */
 @import url(./bloсks/error/error.css);
