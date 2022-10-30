@@ -38,7 +38,7 @@ function AuthorizeForm({ name, handleSubmit }) {
                 required
             />
             <span className="sign__error" >
-                {errorMessages.email}
+                {errorMessages.email} 
             </span>
             <input 
                 type="text" 

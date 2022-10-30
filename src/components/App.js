@@ -27,7 +27,7 @@ function App() {
 
   const [registerStatus, setRegisterStatus] = useState({isOpen: false, status: false});
 
-  const [currentUser, setCurrentUser] =useState({});
+  const [currentUser, setCurrentUser] = useState({data: {}, email: ''});
   const [cardsData, setCardsData] = useState([]);
 
   const [isLoggedIn, setLoginStatus] = useState(false);

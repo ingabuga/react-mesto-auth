@@ -19,6 +19,9 @@ function Header({ signOut }) {
                 className="header__logo"
             >
             </img>
+
+
+
             {isLoggedIn && 
                 <Navigation signOut={signOut} />
             }

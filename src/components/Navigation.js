@@ -4,7 +4,6 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 function Navigation({ signOut }) {
     const [menuIsOpen, setMenuStatus] = useState(false);
-
     const currentUser = useContext(CurrentUserContext);
 
     function handleClick() {

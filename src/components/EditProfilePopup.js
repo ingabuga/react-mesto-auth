@@ -5,31 +5,9 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
     const [name, setName] = useState('');
-    // const [name, setName] = useState({
-    //     value: '',
-    //     isValid: false,
-    //     validationMsg: ''
-    // });
     const [description, setDescription] = useState('');
-    // const [description, setDescription] = useState({
-    //     value: '',
-    //     isValid: false,
-    //     validationMsg: ''
-    // });
-
     const currentUser = useContext(CurrentUserContext);
     
-
-    // const [formIsValid, setFormValidity] = useState(false);
-
-    // function handleFormValidity() {
-    //     (name.isValid && description.isValid) ? setFormValidity(true) : setFormValidity(false);
-    // }
-
-    // useEffect(() => {
-    //     handleFormValidity();
-    //     },
-    // [name, description])
 
 
 
@@ -46,59 +24,17 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
        setName(evt.target.value);
     }
 
-    // function handleNameChange(evt) {
-    //     if (evt.target.validity.valid) {
-    //         setName({
-    //             value: evt.target.value,
-    //             isValid: true,
-    //             validationMsg: ''
-    //         });
-    //     } else {
-    //         setName({
-    //             value: evt.target.value,
-    //             isValid: false,
-    //             validationMsg: evt.target.validationMessage
-    //         });
-    //     }
-    // }
 
     function handleDescriptionChange(evt) {
         setDescription(evt.target.value);
     }
 
 
-    // function handleDescriptionChange(evt) {
-    //     if (evt.target.validity.valid) {
-    //         setDescription({
-    //             value: evt.target.value,
-    //             isValid: true,
-    //             validationMsg: ''
-    //         });
-    //     } else {
-    //         setDescription({
-    //             value: evt.target.value,
-    //             isValid: false,
-    //             validationMsg: evt.target.validationMessage
-    //         });
-    //     }
-    // }
-
     useEffect(() => {
         setName(currentUser.name);
         setDescription(currentUser.about);
       }, 
     [currentUser, isOpen])
-
-    // useEffect(() => {
-    //     setName({
-    //         value: currentUser.name,
-    //         isValid: false,
-    //         validationMsg: ''});
-    //     setDescription({
-    //         value: currentUser.about,
-    //         isValid: false,
-    //         validationMsg: '' });
-    // }, [currentUser, isOpen])
 
 return (
     <PopupWithForm 
@@ -108,7 +44,7 @@ return (
         isOpen={isOpen} 
         onClose={onClose} 
         onSubmit={handleSubmit}
-        // isValid={formIsValid} 
+
     >
     <label className="popup__field">
         <input 
@@ -122,9 +58,8 @@ return (
         />
         <span id="name-input-error" 
         className="error"
-        // className={`error ${(!name.isValid && isOpen) ? "error_active" : ""}`}
         >
-            {/* {name.validationMsg}    */}
+            
         </span>
     </label>
     <label className="popup__field">
@@ -139,9 +74,8 @@ return (
         />
         <span id="job-input-error" 
         className="error"
-        // className={`error ${(!description.isValid && isOpen) ? "error_active" : ""}`}
         >
-            {/* {description.validationMsg} */}
+        
         </span>
     </label>
     </ PopupWithForm>
