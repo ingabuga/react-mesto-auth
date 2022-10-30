@@ -2,7 +2,7 @@
     color: #A9A9A9;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .header__button_type_logout {
         margin: 0;
         font-size: 18px;

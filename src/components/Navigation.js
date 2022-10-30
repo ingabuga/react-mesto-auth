@@ -35,8 +35,7 @@ function Navigation({ signOut }) {
             </ul>
             <button 
                 className={`header__menu-button 
-                    ${menuIsOpen ? 
-                        "header__menu-button_type_close" : "header__menu-button_type_open"}
+                    ${menuIsOpen ? "header__menu-button_type_close" : "header__menu-button_type_open"}
                     `}
                 onClick={handleClick}
             />

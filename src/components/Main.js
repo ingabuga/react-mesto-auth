@@ -15,7 +15,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, cardsData,
                 <div className="profile__info">
                     <div className="profile__avatar-frame">
                         <div className="profile__avatar-hover" onClick={onEditAvatar}></div>
-                        <img className="profile__avatar" src={currentUser.avatar} name="avatar" alt="Улыбающийся Жак Ив Кусто в красной шапочке" />
+                        <img className="profile__avatar" src={currentUser.avatar} name="avatar" alt={currentUser.name} />
                      </div>  
                     <div className="profile__text">
                         <h1 className="profile__title">

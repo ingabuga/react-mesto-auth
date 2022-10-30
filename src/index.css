@@ -2,6 +2,7 @@
 @import url(./fonts/fonts.css);
 @import url(./bloсks/root/root.css);
 @import url(./bloсks/page/page.css);
+@import url(./bloсks/page/__header/page__header.css);
 
 /* Header */
 @import url(./bloсks/header/header.css);
