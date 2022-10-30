@@ -7,12 +7,11 @@ import { HashRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
+  <HashRouter>
   <React.StrictMode>
-    <HashRouter>
       <App />
-    </HashRouter>
   </React.StrictMode>
+  </HashRouter>
   
 );
 
