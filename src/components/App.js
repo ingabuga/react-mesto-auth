@@ -18,8 +18,6 @@ import ProtectedRoute from './ProtectedRoute.js';
 import * as auth from '../utils/Auth.js';
 
 function App() {
-  // popup state
-
   const [isEditProfilePopupOpen, setEditProfileState] = useState(false);
   const [isAddPlacePopupOpen, setAddPlaceState] = useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarState] = useState(false);
@@ -27,21 +25,14 @@ function App() {
   const [deletedCard, setDeletedCard] = useState({data: '', isOpen: false});
   const [isLoading, setIsLoading] = useState(false);
   const [registerStatus, setRegisterStatus] = useState({isOpen: false, status: false});
-  
-  // cards and user data state
 
   const [currentUser, setCurrentUser] = useState({data: {}, email: ''});
   const [cardsData, setCardsData] = useState([]);
 
-  // login state
-
   const [isLoggedIn, setLoginStatus] = useState(false);
 
-  // history
 
   const history = useHistory();
-
-  // Получение данных карточек и пользователя при открытии страницы
 
   useEffect(() => {
     Promise.all([api.getCardsData(), api.getUserData()])
@@ -59,7 +50,6 @@ function App() {
         .catch(err => console.log(`Не удалость загрузить данные. Ошибка: ${err}`));
   }, []);
 
-  // Изменения состояния попапов
 
   function onEditProfile() {
     setEditProfileState(true)
@@ -90,7 +80,6 @@ function App() {
     setDeletedCard({data: card, isOpen: true});
   }
 
-  // Обработчики сабмитов, лайков, удаления карточки
 
   function handleCardLike(card, isLiked) {
     api.handleLike(card._id, isLiked)
@@ -162,8 +151,6 @@ function App() {
     }
   }
 
-  // регистрация, вход в аккаунт, проверка токена при входе, выход из аккаунта
-
   function checkToken() {
     const token = localStorage.getItem('token');
 
@@ -214,10 +201,28 @@ function App() {
       });
   }
 
-  // JSX
+
+  //Обработчик нажатия Escape
+  const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.isOpen || deletedCard.isOpen || registerStatus.isOpen
+
+  useEffect(() => {
+    function closeByEscape(evt) {
+      if(evt.key === 'Escape') {
+        closeAllPopups();
+      }
+    }
+    if(isOpen) { 
+      document.addEventListener('keydown', closeByEscape);
+      return () => {
+        document.removeEventListener('keydown', closeByEscape);
+      }
+    }
+  }, [isOpen])
+
+  
 
   return (
-    <div className="App">
+    <div className="root">
       <LoginContext.Provider value={isLoggedIn} >
         <CurrentUserContext.Provider value={currentUser} >
           <Header signOut={signOut} />

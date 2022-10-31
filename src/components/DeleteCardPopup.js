@@ -4,7 +4,6 @@ function DeleteCardPopup({ isOpen, onClose, card, onDeleteCard }) {
 
     function handleSubmit(evt) {
         evt.preventDefault();
-
         onDeleteCard(card);
     }
 

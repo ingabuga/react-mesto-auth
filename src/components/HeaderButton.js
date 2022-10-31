@@ -11,8 +11,9 @@ function HeaderButton({ text, link, signOut }) {
                 type="button" 
                 className={`
                     header__button 
-                    ${isLoggedIn ? 
-                        "header__button_type_logout" : "header__button_type_sign"
+                    ${isLoggedIn 
+                        ? "header__button_type_logout" 
+                        : "header__button_type_sign"
                     }
                 `}
                 onClick={isLoggedIn ? signOut : undefined}

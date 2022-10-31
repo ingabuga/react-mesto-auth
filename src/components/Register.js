@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AuthForm from './AuthForm.js';
+import AuthorizeForm from './AuthorizeForm.js';
 
 function Register({ handleRegister }) {
     return(
-        <section className="sign content__sign">
-            <AuthForm
+        <section className="sign sign__content">
+            <AuthorizeForm
                 name='signup'
                 handleSubmit={handleRegister}
             />

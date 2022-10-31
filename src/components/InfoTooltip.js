@@ -15,21 +15,17 @@ function InfoTooltip({ isOpen, isSuccess, onClose }) {
 
     return(
         <section className={`popup ${isOpen && "popup_opened"}`}>
-            <div className="popup__form popup__form_type_result" >
-                <div 
-                    className={`popup__result-img ${
-                        isSuccess ? 
-                            "popup__result-img_type_success" : "popup__result-img_type_fail"
-                    }`} 
+            <div className="popup__tooltip popup__tooltip_type_result" >
+                <div className={`popup__result
+                ${isSuccess ? "popup__result_type_correct" : "popup__result_type_incorrect"}`} 
                 />
                 <p className="popup__result-caption">
-                    {isSuccess ? 
-                        "Вы успешно зарегистрировались!" : "Что-то пошло не так! Попробуйте ещё раз."
+                    {isSuccess ? "Вы успешно зарегистрировались!" : "Что-то пошло не так! Попробуйте ещё раз."
                     }
                 </p>
                 <button 
                     type="reset" 
-                    className="popup__close-button" 
+                    className="popup__close-btn" 
                     onClick={handleClose}
                 />
             </div>

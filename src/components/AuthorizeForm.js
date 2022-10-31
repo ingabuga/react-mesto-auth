@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useFormStateAndValidation from '../hooks/useFormStateAndValidation.js';
 
-function AuthForm({ name, handleSubmit }) {
+function AuthorizeForm({ name, handleSubmit }) {
     const { values, errorMessages, formIsValid, onChange, resetFormValues } = useFormStateAndValidation();
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function AuthForm({ name, handleSubmit }) {
                 value={values.email || ''}
                 required
             />
-            <span className="sign__error-message" >
+            <span className="sign__error" >
                 {errorMessages.email}
             </span>
             <input 
@@ -45,14 +45,14 @@ function AuthForm({ name, handleSubmit }) {
                 name="password" 
                 id="password-input" 
                 className="sign__input" 
-                minLength="5" 
-                maxLength="16" 
+                minLength="7" 
+                maxLength="20" 
                 placeholder="Пароль"
                 onChange={onChange}
                 value={values.password || ''}
                 required
             />
-            <span className="sign__error-message" >
+            <span className="sign__error" >
                 {errorMessages.password}
             </span>
             <button 
@@ -71,4 +71,4 @@ function AuthForm({ name, handleSubmit }) {
     )
 }
 
-export default AuthForm;
+export default AuthorizeForm;

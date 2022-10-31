@@ -18,58 +18,48 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         })
     }
 
-    return(
+    return (
         <PopupWithForm 
-            name="add" 
+            name="place" 
             title="Новое место" 
-            buttonText="Создать" 
+            buttonText="Создать"
             isOpen={isOpen} 
             onClose={onClose} 
             onSubmit={handleSubmit} 
             isValid={formIsValid} 
         >
-            <>
+            <label className="popup__field">
                 <input 
                     type="text" 
-                    name="name" 
-                    placeholder="Название" 
                     id="place-input" 
-                    className="popup__input popup__input_type_place" 
-                    required 
-                    minLength="2" 
-                    maxLength="30" 
+                    placeholder="Название" 
+                    name="name" className="popup__text popup__text_input_name" required minLength="2" maxLength="30" 
                     onChange={onChange} 
-                    value={values.name || ''} 
+                    value={values.name || ''}
                 />
-                <span 
-                    className={`popup__error-message ${
-                        (!formIsValid && isOpen) ? 
-                            "popup__error-message_visible" : "popup__error-message_hidden"
-                        }`} 
-                >
-                    {errorMessages.name}
+                <span id="place-input-error" 
+                    className={`error ${(!formIsValid && isOpen) ? "error_active" : ""}`}>
+                        {errorMessages.name}
                 </span>
+            </label>
+            <label className="popup__field">
                 <input 
                     type="url" 
-                    name="link" 
-                    placeholder="Ссылка на картинку" 
                     id="link-input" 
-                    className="popup__input popup__input_type_link" 
-                    required 
+                    placeholder="Ссылка на картинку" 
+                    name="link" className="popup__text popup__text_input_job" required 
                     onChange={onChange} 
-                    value={values.link || ''} 
+                    value={values.link || ''}
                 />
-                <span 
-                    className={`popup__error-message ${
-                        (!formIsValid && isOpen) ? 
-                            "popup__error-message_visible" : "popup__error-message_hidden"
-                        }`} 
-                >
-                    {errorMessages.link}
+                <span id="link-input-error" 
+                    className={`error ${(!formIsValid && isOpen) ? "error_active" : ""}`}>
+                        {errorMessages.link}
                 </span>
-            </>
+            </label>
         </PopupWithForm>
-    )
+        )
+
+
 }
 
 export default AddPlacePopup;

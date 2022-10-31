@@ -1,10 +1,10 @@
 import React from 'react';
-import AuthForm from './AuthForm.js';
+import AuthorizeForm from './AuthorizeForm.js';
 
 function Login({ handleLogin }) {
     return(
-        <section className="sign content__sign">
-            <AuthForm
+        <section className="sign sign__content">
+            <AuthorizeForm
                 name='signin'
                 handleSubmit={handleLogin}
             />

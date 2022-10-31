@@ -3,24 +3,21 @@ import React from 'react';
 function ImagePopup({ isOpen, onClose, card }) {
     return(
         <section 
-            className={`popup popup_type_image ${isOpen && "popup_opened"}`}
-        >
-            <div className="popup__wrapper">
-                <figure className="popup__figure">
-                    <img 
+            className={`popup popup_photo popup_shadow ${isOpen && "popup_opened"}`}>
+            <div className="popup__preview">
+                <div className="popup__image">
+                    <img className="popup__image" 
                         src={isOpen ? card.link : ''} 
                         alt={card.name} 
-                        className="popup__image" 
                     />
-                    <figcaption className="popup__caption">
+                    <p className="popup__description">
                         {card.name}
-                    </figcaption>
-                </figure>
+                    </p>
+                </div>
                 <button 
+                    className="popup__close-btn"
                     type="button" 
-                    className="popup__close-button" 
-                    onClick={onClose} 
-                />
+                    onClick={onClose} />
             </div>
         </section>
     )
