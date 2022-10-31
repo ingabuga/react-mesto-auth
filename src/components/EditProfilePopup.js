@@ -28,57 +28,6 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     [currentUser, isOpen])
 
     return(
-        // <PopupWithForm 
-        //     name="profile" 
-        //     title="Редактировать профиль" 
-        //     buttonText="Сохранить" 
-        //     isOpen={isOpen} 
-        //     onClose={onClose} 
-        //     onSubmit={handleSubmit} 
-        //     isValid={formIsValid} 
-        // >
-        //     <>
-        //         <input 
-        //             type="text" 
-        //             name="name" 
-        //             id="name-input" 
-        //             className="popup__input popup__input_type_name" 
-        //             required 
-        //             minLength="2" 
-        //             maxLength="40" 
-        //             onChange={onChange} 
-        //             value={values.name || ''} 
-        //         />
-        //         <span 
-        //             className={`popup__error-message ${
-        //                 (!formIsValid && isOpen) ? 
-        //                     "popup__error-message_visible" : "popup__error-message_hidden"
-        //             }`} 
-        //         >
-        //             {errorMessages.name}
-        //         </span>
-        //         <input 
-        //             type="text" 
-        //             name="about" 
-        //             id="job-input" 
-        //             className="popup__input popup__input_type_job" 
-        //             required 
-        //             minLength="2" 
-        //             maxLength="200" 
-        //             onChange={onChange} 
-        //             value={values.about || ''} 
-        //         />
-        //         <span 
-        //             className={`popup__error-message ${
-        //                 (!formIsValid && isOpen) ? 
-        //                     "popup__error-message_visible" : "popup__error-message_hidden"
-        //             }`} 
-        //         >
-        //             {errorMessages.about}
-        //         </span>
-        //     </>
-        // </PopupWithForm>
-
         <PopupWithForm 
             name="profile" 
             title="Редактировать профиль"
