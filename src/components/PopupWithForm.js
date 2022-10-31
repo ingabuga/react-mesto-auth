@@ -1,40 +1,44 @@
 import { useContext } from 'react';
 import { LoadingContext } from '../contexts/LoadingContext.js';
-// import React from 'react';
-
 
 function PopupWithForm({ name, title, buttonText, isOpen, onClose, onSubmit, isValid = true, children }) {
     const isLoading = useContext(LoadingContext);
 
-    return (
-    <div className={`popup popup_${name} ${isOpen && "popup_opened"}`}>
-        <div className="popup__container">
-            <button 
-                className="popup__close-btn" 
-                type="button" 
-                onClick={onClose} 
-            />
+    return(
+        <section 
+            className={`popup popup_type_${name} ${isOpen && "popup_opened"}`}
+        >
             <form 
-                className="popup__form" 
                 name={name} 
+                className="popup__form popup__form_type_form-popup" 
                 onSubmit={onSubmit} 
-                noValidate 
+                noValidate
             >
-                <h2 className="popup__title">{title}</h2>
-                {children}
+                <fieldset className="popup__fieldset">
+                    <legend className="popup__title">
+                        {title}
+                    </legend>
+                    {children}
+                    <button 
+                        type="submit" 
+                        className={
+                            `popup__submit-button 
+                            ${name === 'delete' && 'popup__submit-button_place_delete-popup'} 
+                            ${!isValid && "popup__submit-button_disabled"}`
+                        } 
+                        disabled={!isValid} 
+                    >
+                        {isLoading ? 'Сохранение...' : buttonText}
+                    </button>
+                </fieldset>
                 <button 
-                    // className="popup__save-button" 
-                    className={`popup__save-button ${name === 'delete'} ${!isValid && "popup__save-button_inactive"}`}
-                    type="submit" 
-                    disabled={!isValid}
-                    // onClick={onClose}
-                > 
-                {isLoading ? 'Сохранение...' : buttonText}
-                </button>
+                    type="reset" 
+                    className="popup__close-button" 
+                    onClick={onClose} 
+                />
             </form>
-        </div>
-    </div>
-    )
+        </section>
+    );
 }
 
 export default PopupWithForm;

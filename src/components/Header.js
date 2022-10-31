@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import logo from '../images/logo-mesto_white.svg';
+import headerLogo from '../images/logo-mesto_white.svg'
 import Navigation from './Navigation';
 import { LoginContext } from '../contexts/LoginContext';
 import { useLocation } from "react-router-dom";
@@ -10,18 +10,20 @@ function Header({ signOut }) {
     const currentLocation = useLocation();
 
     return(
-        <div className={`header page__header
-            ${isLoggedIn ? "header_type_login" : "header_type_sign"}`} 
+        <div className={`
+            header 
+            page__header
+            ${isLoggedIn ?
+                "header_type_login" :
+                "header_type_sign"}
+            `} 
         >
             <img 
-                src={logo} 
+                src={headerLogo} 
                 alt="Логотип" 
                 className="header__logo"
             >
             </img>
-
-
-
             {isLoggedIn && 
                 <Navigation signOut={signOut} />
             }
