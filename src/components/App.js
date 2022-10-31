@@ -35,7 +35,7 @@ function App() {
   const history = useHistory();
 
   useEffect(() => {
-    Promise.all([api.getCardsData(), api.getUserData()])
+    Promise.all([api.getInitialCards(), api.getUserData()])
         .then(allData => {
           const [cardsData, userData] = allData;
           return [cardsData, userData]
@@ -104,7 +104,7 @@ function App() {
   function handleUpdateUser(data) {
     setIsLoading(true);
 
-    api.setUserData(data)
+    api.patchUserData(data)
       .then(newUserData => setCurrentUser(prevState => ({
         ...prevState,
         data: newUserData,
@@ -117,7 +117,7 @@ function App() {
   function handleUpdateAvatar(data) {
     setIsLoading(true);
 
-    api.setAvatar(data)
+    api.patchAvatar(data)
       .then(newUserData => setCurrentUser(prevState => ({
         ...prevState,
         data: newUserData,
@@ -130,7 +130,7 @@ function App() {
   function handleAddPlaceSubmit(data) {
     setIsLoading(true);
 
-    api.postCard(data)
+    api.addNewCard(data)
       .then(newCard => setCardsData([newCard, ...cardsData]))
       .then(() => closeAllPopups())
       .catch(err => console.log(`Не удалость отправить карточку. Ошибка: ${err}`))

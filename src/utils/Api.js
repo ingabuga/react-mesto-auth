@@ -4,18 +4,15 @@ class Api {
         this._cohort = cohort;
         this._token = token;
     }
+  
 
-    _checkResponse(res) {
-        return res.ok ? res.json() : Promise.reject(res.status);
-    }
-
-    getCardsData = () => {
+    getInitialCards = () => {
         return fetch(`${this._baseUrl}/${this._cohort}/cards`, {
             headers: {
                 authorization: this._token
             }
         })
-            .then(res => this._checkResponse(res));
+            .then(res => this._check(res));
     }
 
     getUserData = () => {
@@ -24,10 +21,10 @@ class Api {
                 authorization: this._token
             }
         })
-            .then(res => this._checkResponse(res));
+            .then(res => this._check(res));
     }
 
-    setUserData = (data) => {
+    patchUserData = (data) => {
         return fetch(`${this._baseUrl}/${this._cohort}/users/me`, {
             method: 'PATCH',
             headers: {
@@ -39,10 +36,10 @@ class Api {
                 about: data.about
             })
         })
-            .then(res => this._checkResponse(res));
+            .then(res => this._check(res));
     }
 
-    setAvatar = (data) => {
+    patchAvatar = (data) => {
         return fetch(`${this._baseUrl}/${this._cohort}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
@@ -53,10 +50,10 @@ class Api {
                 avatar: data.avatar,
             })
         })
-            .then(res => this._checkResponse(res));
+            .then(res => this._check(res));
     }
 
-    postCard = (data) => {
+    addNewCard = (data) => {
         return fetch(`${this._baseUrl}/${this._cohort}/cards`, {
             method: 'POST',
             headers: {
@@ -68,7 +65,7 @@ class Api {
                 link: data.link
             })
         })
-            .then(res => this._checkResponse(res));
+            .then(res => this._check(res));
     }
 
     deleteCard = (cardId) => {
@@ -78,7 +75,7 @@ class Api {
                 authorization: this._token,
             }
         })
-            .then(res => this._checkResponse(res));
+            .then(res => this._check(res));
     }
 
     handleLike = (cardId, isLiked) => {
@@ -88,8 +85,17 @@ class Api {
                 authorization: this._token,
             },
         })
-            .then(res => this._checkResponse(res));
+            .then(res => this._check(res));
     }
+
+    _check(res) {
+        if (res.ok) {
+          return res.json();
+        }
+    
+        return Promise.reject(res);
+    }
+
 }
 
 const config = {
