@@ -19,7 +19,7 @@ export const register = (password, email) => {
 }
 
 export const login = (password, email) => {
-    return request(`${BASE_URL}/signin`, {
+    return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json" 
