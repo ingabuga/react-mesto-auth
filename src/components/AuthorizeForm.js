@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import useFormStateAndValidation from '../hooks/useFormStateAndValidation';
+import useFormStateAndValidation from '../hooks/useFormStateAndValidation.js';
 
 function AuthorizeForm({ name, handleSubmit }) {
     const { values, errorMessages, formIsValid, onChange, resetFormValues } = useFormStateAndValidation();
@@ -24,8 +24,8 @@ function AuthorizeForm({ name, handleSubmit }) {
         >
         <fieldset className="sign__fieldset">
             <legend className="sign__title">
-                {name === "signin" && "Вход"}
                 {name === "signup" && "Регистрация"}
+                {name === "signin" && "Вход"}
             </legend>
             <input 
                 type="email"
@@ -38,7 +38,7 @@ function AuthorizeForm({ name, handleSubmit }) {
                 required
             />
             <span className="sign__error" >
-                {errorMessages.email} 
+                {errorMessages.email}
             </span>
             <input 
                 type="text" 
@@ -59,12 +59,12 @@ function AuthorizeForm({ name, handleSubmit }) {
                 type="submit" 
                 className={
                     `sign__submit-button 
-                    ${!formIsValid && "sign__submit-button_inactive"}`
+                    ${!formIsValid && "sign__submit-button_disabled"}`
                 } 
                 disabled={!formIsValid}
             >
-                {name === "signin" && "Войти"}
                 {name === "signup" && "Зарегистрироваться"}
+                {name === "signin" && "Войти"}
             </button>
         </fieldset>
     </form>

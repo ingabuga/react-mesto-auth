@@ -4,6 +4,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 function Navigation({ signOut }) {
     const [menuIsOpen, setMenuStatus] = useState(false);
+
     const currentUser = useContext(CurrentUserContext);
 
     function handleClick() {
@@ -34,7 +35,8 @@ function Navigation({ signOut }) {
             </ul>
             <button 
                 className={`header__menu-button 
-                    ${menuIsOpen ? "header__menu-button_type_close" : "header__menu-button_type_open"}
+                    ${menuIsOpen ? 
+                        "header__menu-button_type_close" : "header__menu-button_type_open"}
                     `}
                 onClick={handleClick}
             />
